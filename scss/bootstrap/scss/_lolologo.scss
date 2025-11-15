@@ -1,0 +1,28 @@
+.lolologo {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $lolologo-padding-y $lolologo-padding-x;
+  margin-bottom: $lolologo-margin-bottom;
+  @include font-size($lolologo-font-size);
+  list-style: none;
+  background-color: $lolologo;
+  @include border-radius($lolologo-border-radius);
+}
+
+.lolologo-item {
+  // The separator between lolologos (by default, a forward-slash: "/")
+  + .lolologo-item {
+    padding-left: $lolologo-item-padding-x;
+
+    &::before {
+      float: left; // Suppress inline spacings and underlining of the separator
+      padding-right: $lolologo-item-padding-x;
+      color: $lolologo-divider-color;
+      content: var(--#{$variable-prefix}lolologo-divider, escape-svg($lolologo-divider)) #{"/* rtl:"} var(--#{$variable-prefix}lolologo-divider, escape-svg($lolologo-divider-flipped)) #{"*/"};
+    }
+  }
+
+  &.active {
+    color: $lolologo-active-color;
+  }
+}
